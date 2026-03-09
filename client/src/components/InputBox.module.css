@@ -1,5 +1,21 @@
-.container {
+.inputBoxContainer {
   display: flex;
-  border: black solid 1px;
   padding: 5px;
+}
+
+.inputResponse {
+  display: flex;
+  padding-right: 5px;
+}
+
+.inputBox {
+  border: rgb(138, 187, 233) solid 1px;
+  padding: 10px;
+  width: 100%;
+}
+
+.inputButton {
+  padding: 10px;
+  background-color: rgb(138, 187, 233);
+  color: white;
 }
