@@ -1,9 +1,9 @@
 import styles from "./ChatBox.module.css";
 
-function ChatBox() {
+function ChatBox({ displayedValue }: { displayedValue: string }) {
   return (
     <div>
-      <div className={styles.chatBoxContainer}>Chatbox</div>
+      <div className={styles.chatBoxContainer}>{displayedValue}</div>
     </div>
   );
 }
