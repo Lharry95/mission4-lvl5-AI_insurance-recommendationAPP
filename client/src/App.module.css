@@ -1,9 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
   height: 100vh;
-  gap: 10%;
+  background-color: lightblue;
+}
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 20%);
 }

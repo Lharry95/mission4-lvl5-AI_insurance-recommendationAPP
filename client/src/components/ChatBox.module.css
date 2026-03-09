@@ -1,0 +1,9 @@
+.chatBoxContainer {
+  display: flex;
+  border: 2px solid rgb(29, 44, 64);
+  height: 200px;
+  width: 350px;
+  background-color: white;
+  color: rgb(62, 62, 107);
+  padding: 10px;
+}

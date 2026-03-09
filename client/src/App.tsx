@@ -6,9 +6,11 @@ import styles from "./App.module.css";
 function App() {
   return (
     <div className={styles.container}>
-      <ChatBoxHeader />
-      <ChatBox />
-      <InputBox />
+      <div className={styles.chatBox}>
+        <ChatBoxHeader />
+        <ChatBox />
+        <InputBox />
+      </div>
     </div>
   );
 }

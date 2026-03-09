@@ -1,0 +1,5 @@
+.chatBoxHeaderContainer {
+  display: flex;
+  padding: 15px;
+  color: rgb(70, 91, 127);
+}
