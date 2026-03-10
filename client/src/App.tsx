@@ -2,19 +2,39 @@ import ChatBoxHeader from "./components/ChatBoxHeader";
 import ChatBox from "./components/ChatBox";
 import InputBox from "./components/InputBox";
 import styles from "./App.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Message } from "./types";
 
 function App() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: crypto.randomUUID(),
-      role: "assistant",
-      content:
-        "I'm Tina. I help you to choose the right insurance policy. May I ask you a few personal questions to make sure I recommend the best policy for you?",
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    const getInitialMessageFromAi = async () => {
+      try {
+        const response = await fetch(``, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            conversation: [],
+          }),
+        });
+        const data = await response.json();
+
+        const initialMessageFromAi: Message = {
+          id: crypto.randomUUID(),
+          role: "user",
+          content: data.reply,
+        };
+        setMessages([initialMessageFromAi]);
+      } catch (error) {
+        console.log(error);
+        alert("Error! Somethings wrong with Tina!");
+      }
+    };
+  });
 
   const handleUserMessage = async (userMessage: string) => {
     const newUserMessage: Message = {

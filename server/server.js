@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/policy-assistant", async (req, res) => {
   const { conversation } = req.body;
-  if (!Array.isArray(conversation) || conversation.length === 0) {
+  if (!Array.isArray(conversation)) {
     return res.status(400).json({ error: "Error! Invalid Message" });
   }
 
