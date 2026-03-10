@@ -12,7 +12,7 @@ function ChatBox({ messages }: ChatBoxProps) {
         {messages.map((message) => (
           <div key={message.id}>
             <p className={styles.messageResponse}>
-              {message.role}: {message.content}
+              {message.role === "assistant" ? "Tina" : "Me"}: {message.content}
             </p>
           </div>
         ))}

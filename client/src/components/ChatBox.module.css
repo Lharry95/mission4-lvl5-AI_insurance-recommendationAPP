@@ -1,17 +1,19 @@
 .chatBoxContainer {
   display: flex;
+  flex-direction: column;
   border: 2px solid rgb(29, 44, 64);
   height: 200px;
   width: 370px;
   background-color: white;
   color: rgb(62, 62, 107);
   padding: 10px;
+  gap: 10px;
 }
 
 .messageResponse {
   display: flex;
-  flex-direction: column;
-  background-color: lightblue;
+
+  background-color: rgb(237, 243, 245);
   padding: 5px;
-  max-width: 200px;
+  max-width: 250px;
 }

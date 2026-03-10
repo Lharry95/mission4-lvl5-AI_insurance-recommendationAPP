@@ -10,7 +10,7 @@ function App() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: crypto.randomUUID(),
-      role: "Tina",
+      role: "assistant",
       content:
         "I'm Tina. I help you to choose the right insurance policy. May I ask you a few personal questions to make sure I recommend the best policy for you?",
     },
@@ -19,7 +19,7 @@ function App() {
   const handleUserMessage = async (text: string) => {
     const newUserMessage: Message = {
       id: crypto.randomUUID(),
-      role: "me",
+      role: "user",
       content: text,
     };
     setMessages((prevMessages) => [...prevMessages, newUserMessage]);
@@ -31,18 +31,21 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: text,
+          conversation: text,
         }),
       });
       const data = await response.json();
 
       const assisstantMessage: Message = {
         id: crypto.randomUUID(),
-        role: "Tina",
+        role: "assistant",
         content: data.reply,
       };
       setMessages((prevMessages) => [...prevMessages, assisstantMessage]);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      alert("Error, something has gone wrong!");
+    }
   };
 
   return (
