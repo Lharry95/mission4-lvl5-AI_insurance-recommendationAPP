@@ -7,3 +7,11 @@
   color: rgb(62, 62, 107);
   padding: 10px;
 }
+
+.messageResponse {
+  display: flex;
+  flex-direction: column;
+  background-color: lightblue;
+  padding: 5px;
+  max-width: 200px;
+}

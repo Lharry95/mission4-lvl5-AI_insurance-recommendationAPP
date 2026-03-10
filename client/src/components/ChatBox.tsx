@@ -1,21 +1,22 @@
 import styles from "./ChatBox.module.css";
 import type { Message } from "../types";
-import { type Dispatch, type SetStateAction } from "react";
 
 type ChatBoxProps = {
   messages: Message[];
-  setMessages: Dispatch<SetStateAction<Message[]>>;
 };
 
-function ChatBox({ messages, setMessages }: ChatBoxProps) {
-  const displayConversation = async (messages: string) => {
-    const userMessage: Message = { role: "user", content: "" };
-    setMessages((prevMessages) => [...prevMessages, userMessage]);
-  };
-
+function ChatBox({ messages }: ChatBoxProps) {
   return (
     <div>
-      <div className={styles.chatBoxContainer}></div>
+      <div className={styles.chatBoxContainer}>
+        {messages.map((message) => (
+          <div key={message.id}>
+            <p className={styles.messageResponse}>
+              {message.role}: {message.content}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
