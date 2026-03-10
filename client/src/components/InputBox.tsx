@@ -1,22 +1,39 @@
 import styles from "./InputBox.module.css";
-import { type MouseEvent, type ChangeEvent, useState } from "react";
+import {
+  type MouseEvent,
+  type ChangeEvent,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+} from "react";
+import type { Message } from "../types";
 
-type ChildAProps = {
-  setDisplayedValue: React.Dispatch<React.SetStateAction<string>>;
+type MessageProps = {
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 };
 
-function InputBox({ setDisplayedValue }: ChildAProps) {
+function InputBox({ setMessages }: MessageProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   const submitResponse = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-    console.log("Button was clicked!", event.target.value);
   };
 
   const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+    const userInputValue = inputValue.trim();
+    const newUserMessage: Message = {
+      role: "user",
+      content: userInputValue,
+    };
+
     event.preventDefault();
-    setDisplayedValue(inputValue);
-    setInputValue("");
+
+    if (!userInputValue || !isNaN(Number(userInputValue))) {
+      alert("Error - Please enter a valid response!");
+    } else {
+      setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+      setInputValue("");
+    }
   };
 
   return (
