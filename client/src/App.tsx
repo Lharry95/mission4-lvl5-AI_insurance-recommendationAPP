@@ -16,13 +16,14 @@ function App() {
     },
   ]);
 
-  const handleUserMessage = async (text: string) => {
+  const handleUserMessage = async (userMessage: string) => {
     const newUserMessage: Message = {
       id: crypto.randomUUID(),
       role: "user",
-      content: text,
+      content: userMessage,
     };
-    setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+    const updatedConversation = [...messages, newUserMessage];
+    setMessages(updatedConversation);
 
     try {
       const response = await fetch(`${API_BASE_URL}/api/policy-assistant`, {
@@ -31,7 +32,7 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          conversation: text,
+          conversation: updatedConversation,
         }),
       });
       const data = await response.json();
