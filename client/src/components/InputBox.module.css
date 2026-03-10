@@ -3,6 +3,10 @@
   padding: 10px;
 }
 
+.formContainer {
+  display: flex;
+}
+
 .inputResponse {
   display: flex;
   padding-right: 5px;

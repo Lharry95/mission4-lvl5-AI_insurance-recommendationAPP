@@ -1,7 +1,11 @@
 import styles from "./ChatBox.module.css";
 import type { Message } from "../types";
 
-function ChatBox({ messages }: { messages: Message }) {
+type ChatBoxProps = {
+  messages: Message[];
+};
+
+function ChatBox({ messages }: ChatBoxProps) {
   return (
     <div>
       <div className={styles.chatBoxContainer}></div>

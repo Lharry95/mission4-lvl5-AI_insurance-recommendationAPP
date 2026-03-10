@@ -8,11 +8,11 @@ import {
 } from "react";
 import type { Message } from "../types";
 
-type MessageProps = {
-  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+type SetMessagesProps = {
+  setMessages: Dispatch<SetStateAction<Message[]>>;
 };
 
-function InputBox({ setMessages }: MessageProps) {
+function InputBox({ setMessages }: SetMessagesProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   const submitResponse = (event: ChangeEvent<HTMLInputElement>) => {
@@ -38,23 +38,25 @@ function InputBox({ setMessages }: MessageProps) {
 
   return (
     <div className={styles.inputBoxContainer}>
-      <div className={styles.inputResponse}>
-        <input
-          className={styles.inputBox}
-          type="text"
-          value={inputValue}
-          onChange={submitResponse}
-          id="car Chat Box"
-          placeholder="Enter Text here.."
-        ></input>
-      </div>
-      <button
-        className={styles.inputButton}
-        type="submit"
-        onClick={handleButtonClick}
-      >
-        Submit
-      </button>
+      <form className={styles.formContainer}>
+        <div className={styles.inputResponse}>
+          <input
+            className={styles.inputBox}
+            type="text"
+            value={inputValue}
+            onChange={submitResponse}
+            id="car Chat Box"
+            placeholder="Enter Text here.."
+          ></input>
+        </div>
+        <button
+          className={styles.inputButton}
+          type="submit"
+          onClick={handleButtonClick}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   );
 }
