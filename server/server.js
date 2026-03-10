@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.post("/api/policy-assistant", async (req, res) => {
   const { conversation } = req.body;
-  if (!conversation) {
+  if (!Array.isArray(conversation) || conversation.length === 0) {
     return res.status(400).json({ error: "Error! Invalid Message" });
   }
 
@@ -24,7 +24,7 @@ app.post("/api/policy-assistant", async (req, res) => {
 
     const aiMessage = await aiAssistantResponse(conversation, questionCount);
 
-    res.json({ message: aiMessage });
+    res.json({ reply: aiMessage });
   } catch (error) {
     console.error(error, "Error generating response");
     res.status(500).json({ error: "Failed to generate a response from Tina" });
