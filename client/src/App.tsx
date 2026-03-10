@@ -8,6 +8,7 @@ import type { Message } from "./types";
 function App() {
   const [messages, setMessages] = useState<Message[]>([
     {
+      id: crypto.randomUUID(),
       role: "assistant",
       content:
         "I'm Tina. I help you to choose the right insurance policy. May I ask you a few personal questions to make sure I recommend the best policy for you?",

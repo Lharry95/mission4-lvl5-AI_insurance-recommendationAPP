@@ -1,44 +1,32 @@
 import styles from "./InputBox.module.css";
-import {
-  type MouseEvent,
-  type ChangeEvent,
-  type Dispatch,
-  type SetStateAction,
-  useState,
-} from "react";
-import type { Message } from "../types";
+import { type ChangeEvent, type SubmitEvent, useState } from "react";
 
-type SetMessagesProps = {
-  setMessages: Dispatch<SetStateAction<Message[]>>;
+type InputBoxProps = {
+  onSendMessage: (text: string) => void;
 };
 
-function InputBox({ setMessages }: SetMessagesProps) {
+function InputBox({ onSendMessage }: InputBoxProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   const submitResponse = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
-  const handleButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleFormSubmission = (event: SubmitEvent<HTMLFormElement>) => {
     const userInputValue = inputValue.trim();
-    const newUserMessage: Message = {
-      role: "user",
-      content: userInputValue,
-    };
-
     event.preventDefault();
 
     if (!userInputValue || !isNaN(Number(userInputValue))) {
       alert("Error - Please enter a valid response!");
     } else {
-      setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+      onSendMessage(userInputValue);
       setInputValue("");
     }
   };
 
   return (
     <div className={styles.inputBoxContainer}>
-      <form className={styles.formContainer}>
+      <form className={styles.formContainer} onSubmit={handleFormSubmission}>
         <div className={styles.inputResponse}>
           <input
             className={styles.inputBox}
@@ -49,11 +37,7 @@ function InputBox({ setMessages }: SetMessagesProps) {
             placeholder="Enter Text here.."
           ></input>
         </div>
-        <button
-          className={styles.inputButton}
-          type="submit"
-          onClick={handleButtonClick}
-        >
+        <button className={styles.inputButton} type="submit">
           Submit
         </button>
       </form>
