@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import aiAssistantResponse from "../server/services/aiAssistant.js";
+import aiAssistantResponse from "./services/aiAssistant.js";
 
 dotenv.config();
 const app = express();
