@@ -35,8 +35,8 @@ client/
         │     ├── ChatBoxHeader.module.css    # Header styling
         │     ├── ChatBoxHeader.tsx           # Header
         │     ├── InputBox.module.css         # Input box styling
-        │     ├── InputBox.tsx                # Frontend logic
-        │     └── logo.png                    # Turners Cars logo
+        │     └── InputBox.tsx                # Frontend logic
+        │
         ├──App.module.css                     # Front end styling
         ├──App.tsx                            # API communication
         ├──styles.d.ts                        # declaring styling module
