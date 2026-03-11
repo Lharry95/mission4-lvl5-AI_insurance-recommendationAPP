@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const getInitialMessageFromAi = async () => {
       try {
-        const response = await fetch(``, {
+        const response = await fetch(`${API_BASE_URL}/api/policy-assistant`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -25,7 +25,7 @@ function App() {
 
         const initialMessageFromAi: Message = {
           id: crypto.randomUUID(),
-          role: "user",
+          role: "assistant",
           content: data.reply,
         };
         setMessages([initialMessageFromAi]);
@@ -34,7 +34,8 @@ function App() {
         alert("Error! Somethings wrong with Tina!");
       }
     };
-  });
+    getInitialMessageFromAi();
+  }, []);
 
   const handleUserMessage = async (userMessage: string) => {
     const newUserMessage: Message = {
@@ -65,7 +66,13 @@ function App() {
       setMessages((prevMessages) => [...prevMessages, assisstantMessage]);
     } catch (error) {
       console.log(error);
-      alert("Error, something has gone wrong!");
+
+      const errorMessage: Message = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        content: "Sorry, Something's gone wrong. Please try again",
+      };
+      setMessages((prevMessages) => [...prevMessages, errorMessage]);
     }
   };
 

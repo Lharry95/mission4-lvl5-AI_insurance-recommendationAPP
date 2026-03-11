@@ -13,8 +13,8 @@ function InputBox({ onSendMessage }: InputBoxProps) {
   };
 
   const handleFormSubmission = (event: SubmitEvent<HTMLFormElement>) => {
-    const userInputValue = inputValue.trim();
     event.preventDefault();
+    const userInputValue = inputValue.trim();
 
     if (!userInputValue || !isNaN(Number(userInputValue))) {
       alert("Error - Please enter a valid response!");
