@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import aiAssistantResponse from "../server/services/aiAssistant.js";
 
 dotenv.config();
 const app = express();
@@ -8,11 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send();
+  res.send("Serving is running..");
 });
 
 app.post("/api/policy-assistant", async (req, res) => {
   const { conversation } = req.body;
+
   if (!Array.isArray(conversation)) {
     return res.status(400).json({ error: "Error! Invalid Message" });
   }
@@ -26,7 +28,7 @@ app.post("/api/policy-assistant", async (req, res) => {
 
     res.json({ reply: aiMessage });
   } catch (error) {
-    console.error(error, "Error generating response");
+    console.error("Error generating response", error);
     res.status(500).json({ error: "Failed to generate a response from Tina" });
   }
 });

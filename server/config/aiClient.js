@@ -6,7 +6,7 @@ dotenv.config();
 // if API key is missing
 if (!process.env.GEMINI_API_KEY) {
   throw new Error(
-    "ERROR! The GEMIMNI_API_KEY is missing in environment variables"
+    "ERROR! The GEMINI_API_KEY is missing in environment variables"
   );
 }
 

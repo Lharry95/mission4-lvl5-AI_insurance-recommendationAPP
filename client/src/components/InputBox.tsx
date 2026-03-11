@@ -16,7 +16,7 @@ function InputBox({ onSendMessage }: InputBoxProps) {
     event.preventDefault();
     const userInputValue = inputValue.trim();
 
-    if (!userInputValue || !isNaN(Number(userInputValue))) {
+    if (!userInputValue) {
       alert("Error - Please enter a valid response!");
     } else {
       onSendMessage(userInputValue);
@@ -36,10 +36,11 @@ function InputBox({ onSendMessage }: InputBoxProps) {
             id="car Chat Box"
             placeholder="Enter Text here.."
           ></input>
+
+          <button className={styles.inputButton} type="submit">
+            Submit
+          </button>
         </div>
-        <button className={styles.inputButton} type="submit">
-          Submit
-        </button>
       </form>
     </div>
   );
