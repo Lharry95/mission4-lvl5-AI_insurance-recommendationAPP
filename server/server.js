@@ -15,7 +15,14 @@ app.get("/", (req, res) => {
 app.post("/api/policy-assistant", async (req, res) => {
   const { conversation } = req.body;
 
-  if (!Array.isArray(conversation)) {
+  if (
+    !Array.isArray(conversation) ||
+    !conversation.every(
+      (msg) =>
+        (typeof msg.content === "string" && msg.role === "user") ||
+        msg.role === "assistant"
+    )
+  ) {
     return res.status(400).json({ error: "Error! Invalid Message" });
   }
 

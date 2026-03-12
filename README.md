@@ -11,7 +11,6 @@ conversational AI interviewer powered by Google Gemini.
 - Initial prompt is made by the AI
 - Clean conversational chat interface displaying both AI/Tina and user messages
 - Submit responses by clicking the Submit button or pressing Enter
-- Auto-scrolling conversation box to keep up with the latest messages
 
 ## File Structure
 

@@ -45,7 +45,6 @@ function App() {
     };
     const updatedConversation = [...messages, newUserMessage];
     setMessages(updatedConversation);
-    console.log(updatedConversation);
     try {
       const response = await fetch(`${API_BASE_URL}/api/policy-assistant`, {
         method: "POST",
